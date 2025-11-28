@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "@/components/Header/Header";
 import Section from "@/components/Section";
 import Heading from "@/components/Heading";
@@ -58,7 +58,7 @@ const CurrencyConverter = () => {
     { code: "SEK", name: "Sweden", flag: "🇸🇪" },
   ];
 
-  const fetchExchangeRate = async () => {
+  const fetchExchangeRate = useCallback(async () => {
     if (fromCurrency === toCurrency) {
       setExchangeRate(1);
       setConvertedAmount(amount);
@@ -94,9 +94,9 @@ const CurrencyConverter = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [fromCurrency, toCurrency, amount]);
 
-  const fetchLiveRates = async () => {
+  const fetchLiveRates = useCallback(async () => {
     setRatesLoading(true);
     try {
       const response = await fetch(
@@ -135,12 +135,12 @@ const CurrencyConverter = () => {
     } finally {
       setRatesLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchExchangeRate();
     fetchLiveRates();
-  }, [fromCurrency, toCurrency]);
+  }, [fetchExchangeRate, fetchLiveRates]);
 
   useEffect(() => {
     if (exchangeRate !== null) {
