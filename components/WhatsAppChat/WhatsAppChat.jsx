@@ -115,7 +115,7 @@ const WhatsAppChat = ({ isOpen, onClose }) => {
           {!selectedService && (
             <div className="whatsapp-message whatsapp-message-received">
               <div className="whatsapp-message-bubble whatsapp-message-bubble-received">
-                <p>Please select a service you're interested in:</p>
+                <p>Please select a service you&apos;re interested in:</p>
               </div>
               <span className="whatsapp-message-time">Just now</span>
             </div>
@@ -154,7 +154,7 @@ const WhatsAppChat = ({ isOpen, onClose }) => {
               {/* User Selected Service Message */}
               <div className="whatsapp-message whatsapp-message-sent">
                 <div className="whatsapp-message-bubble whatsapp-message-bubble-sent">
-                  <p>I'm interested in: {selectedService.title}</p>
+                  <p>I&apos;m interested in: {selectedService.title}</p>
                 </div>
                 <span className="whatsapp-message-time">Just now</span>
               </div>
