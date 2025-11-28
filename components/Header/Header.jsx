@@ -110,7 +110,7 @@ const Header = () => {
               openNavigation ? "flex" : "hidden"
             } lg:flex fixed top-[3.75rem] md:top-[4rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:mx-auto lg:bg-transparent`}
           >
-            <div className="flex flex-col lg:flex-row m-auto z-2 relative">
+            <div className="flex flex-col lg:flex-row m-auto z-2 relative w-full lg:w-auto">
               {navigation.map((item) => (
                 <Link
                   href={item.url}
@@ -130,6 +130,18 @@ const Header = () => {
                   {item.title}
                 </Link>
               ))}
+              {/* Book forex button in mobile navbar */}
+              <button
+                onClick={() => {
+                  setOpenWhatsAppChat(true);
+                  if (window.innerWidth < 1024) {
+                    closeNavigation();
+                  }
+                }}
+                className="lg:hidden uppercase text-xl sm:text-2xl text-n-1 transition-colors hover:text-color-1 font-code relative px-4 sm:px-6 py-4 sm:py-6 md:py-8 font-semibold"
+              >
+                Book forex
+              </button>
             </div>
             <HambugerMenu />
           </nav>
@@ -137,7 +149,7 @@ const Header = () => {
             onClick={() => {
               setOpenWhatsAppChat(true);
             }}
-            className="ml-auto lg:flex"
+            className="ml-auto hidden lg:flex"
           >
             Book forex
           </Button>
