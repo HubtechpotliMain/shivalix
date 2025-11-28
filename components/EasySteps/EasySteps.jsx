@@ -53,9 +53,9 @@ const EasySteps = () => {
           </div>
 
           {/* Features */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
             <div className="px-6 py-3 rounded-full bg-color-1/10 border border-color-1/20">
-              <p className="body-2 text-color-1 font-semibold">It's fast</p>
+              <p className="body-2 text-color-1 font-semibold">It&apos;s fast</p>
             </div>
             <div className="px-6 py-3 rounded-full bg-color-4/10 border border-color-4/20">
               <p className="body-2 text-color-4 font-semibold">Secure</p>
