@@ -42,25 +42,25 @@ const HeroFeatures = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
             {features.map((feature) => (
               <div
                 key={feature.id}
-                className="relative p-6 lg:p-8 border border-stroke-1 rounded-3xl bg-n-1 hover:border-color-1/50 transition-all hover:shadow-[0_15px_45px_rgba(15,23,42,0.12)] text-center"
+                className="relative p-4 sm:p-6 lg:p-8 border border-stroke-1 rounded-2xl sm:rounded-3xl bg-n-1 hover:border-color-1/50 transition-all hover:shadow-[0_15px_45px_rgba(15,23,42,0.12)] text-center"
               >
-                <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-color-1/10 flex items-center justify-center">
+                <div className="flex justify-center mb-3 sm:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-color-1/10 flex items-center justify-center">
                     <Image
                       src={feature.icon}
                       alt=""
                       width={24}
                       height={24}
-                      className="text-color-1"
+                      className="text-color-1 w-5 h-5 sm:w-6 sm:h-6"
                     />
                   </div>
                 </div>
-                <h4 className="h5 mb-3 text-black">{feature.title}</h4>
-                <p className="body-2 text-black">{feature.description}</p>
+                <h4 className="h5 mb-2 sm:mb-3 text-black text-lg sm:text-xl md:text-2xl">{feature.title}</h4>
+                <p className="body-2 text-black text-sm sm:text-base">{feature.description}</p>
               </div>
             ))}
           </div>

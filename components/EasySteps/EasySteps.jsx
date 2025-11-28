@@ -53,34 +53,34 @@ const EasySteps = () => {
           </div>
 
           {/* Features */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="px-6 py-3 rounded-full bg-color-1/10 border border-color-1/20">
-              <p className="body-2 text-color-1 font-semibold">It&apos;s fast</p>
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
+            <div className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-color-1/10 border border-color-1/20">
+              <p className="body-2 text-color-1 font-semibold text-xs sm:text-sm md:text-base">It&apos;s fast</p>
             </div>
-            <div className="px-6 py-3 rounded-full bg-color-4/10 border border-color-4/20">
-              <p className="body-2 text-color-4 font-semibold">Secure</p>
+            <div className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-color-4/10 border border-color-4/20">
+              <p className="body-2 text-color-4 font-semibold text-xs sm:text-sm md:text-base">Secure</p>
             </div>
-            <div className="px-6 py-3 rounded-full bg-color-2/10 border border-color-2/20">
-              <p className="body-2 text-color-2 font-semibold">Convenient</p>
+            <div className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-color-2/10 border border-color-2/20">
+              <p className="body-2 text-color-2 font-semibold text-xs sm:text-sm md:text-base">Convenient</p>
             </div>
           </div>
 
           {/* Steps Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-16">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12 sm:mb-16">
             {steps.map((step, index) => (
               <div
                 key={step.id}
-                className="relative p-6 lg:p-8 border border-stroke-1 rounded-2xl bg-n-1 hover:border-color-1/50 hover-lift card-glow transition-all duration-300"
+                className="relative p-4 sm:p-6 lg:p-8 border border-stroke-1 rounded-xl sm:rounded-2xl bg-n-1 hover:border-color-1/50 hover-lift card-glow transition-all duration-300"
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-conic-gradient p-0.5">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-conic-gradient p-0.5">
                     <div className="w-full h-full rounded-full bg-n-1 flex items-center justify-center">
-                      <span className="h6 text-color-1">{step.id}</span>
+                      <span className="h6 text-color-1 text-sm sm:text-base">{step.id}</span>
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h4 className="h6 mb-2 text-black">{step.title}</h4>
-                    <p className="body-2 text-black">{step.description}</p>
+                    <h4 className="h6 mb-2 text-black text-base sm:text-lg">{step.title}</h4>
+                    <p className="body-2 text-black text-sm sm:text-base">{step.description}</p>
                   </div>
                 </div>
               </div>
@@ -89,9 +89,9 @@ const EasySteps = () => {
 
           {/* Stats Section */}
           <div className="relative">
-            <div className="text-center mb-8">
-              <h3 className="h3 mb-4 text-black">Proudly says</h3>
-              <div className="text-4xl mb-6">😊😊😊</div>
+            <div className="text-center mb-6 sm:mb-8">
+              <h3 className="h3 mb-3 sm:mb-4 text-black text-xl sm:text-2xl md:text-3xl">Proudly says</h3>
+              <div className="text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">😊😊😊</div>
             </div>
             <CompanyLogos />
           </div>

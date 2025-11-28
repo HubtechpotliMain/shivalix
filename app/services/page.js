@@ -7,7 +7,7 @@ import ButtonGradient from "@/app/assets/svg/ButtonGradient";
 const ServicesPage = () => {
   return (
     <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden min-h-screen">
+      <div className="pt-[4.5rem] sm:pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden min-h-screen">
         <Header />
         <Services />
       </div>

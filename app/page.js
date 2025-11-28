@@ -21,7 +21,7 @@ import ExecutiveTeam from "@/components/ExecutiveTeam/ExecutiveTeam";
 const Home = () => {
   return (
     <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
+      <div className="pt-[4.5rem] sm:pt-[4.75rem] lg:pt-[5.25rem] overflow-x-hidden">
         <Header />
         <Hero />
         <Stats />

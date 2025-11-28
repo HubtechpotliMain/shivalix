@@ -155,67 +155,70 @@ const CurrencyConverter = () => {
 
   return (
     <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden min-h-screen">
+      <div className="pt-[4.5rem] sm:pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden min-h-screen">
         <Header />
-        <Section className="py-20">
-          <div className="container relative z-2">
+        <Section className="py-12 sm:py-16 lg:py-20">
+          <div className="container relative z-2 px-4 sm:px-5">
             <Heading
               title="Currency Converter"
               text="Get live exchange rates and convert currencies in real-time"
-              className="mb-12"
+              className="mb-8 sm:mb-12"
             />
 
             {/* Live Rates Table */}
-            <div className="mb-12">
-              <div className="bg-n-8 border border-n-6 rounded-3xl p-8 lg:p-12">
-                <h2 className="h3 mb-6 text-n-1">Live Exchange Rates - Top 20 Countries</h2>
-                <p className="body-2 text-n-2 mb-6">
+            <div className="mb-8 sm:mb-12">
+              <div className="bg-n-8 border border-n-6 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12">
+                <h2 className="h3 mb-4 sm:mb-6 text-n-1 text-xl sm:text-2xl md:text-3xl">Live Exchange Rates - Top 20 Countries</h2>
+                <p className="body-2 text-n-2 mb-4 sm:mb-6 text-sm sm:text-base">
                   Real-time exchange rates for countries where Indians travel or live
                 </p>
                 
                 {ratesLoading ? (
-                  <div className="text-center py-12">
-                    <p className="body-2 text-n-2">Loading live rates...</p>
+                  <div className="text-center py-8 sm:py-12">
+                    <p className="body-2 text-n-2 text-sm sm:text-base">Loading live rates...</p>
                   </div>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b border-n-6">
-                          <th className="text-left py-4 px-4 body-2 text-n-1">Country</th>
-                          <th className="text-left py-4 px-4 body-2 text-n-1">Currency</th>
-                          <th className="text-right py-4 px-4 body-2 text-n-1">1 INR =</th>
-                          <th className="text-right py-4 px-4 body-2 text-n-1">1 Foreign =</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {liveRates.map((rate, index) => (
-                          <tr
-                            key={index}
-                            className="border-b border-n-6/50 hover:bg-n-7/30 transition-colors"
-                          >
-                            <td className="py-4 px-4 body-2 text-n-2">
-                              <span className="mr-2">{rate.flag}</span>
-                              {rate.name}
-                            </td>
-                            <td className="py-4 px-4 body-2 text-n-2 font-semibold">
-                              {rate.code}
-                            </td>
-                            <td className="py-4 px-4 body-2 text-n-2 text-right">
-                              {rate.rate} {rate.code}
-                            </td>
-                            <td className="py-4 px-4 body-2 text-color-1 text-right font-semibold">
-                              ₹{rate.inrRate}
-                            </td>
+                  <div className="overflow-x-auto -mx-4 sm:mx-0">
+                    <div className="inline-block min-w-full align-middle px-4 sm:px-0">
+                      <table className="w-full min-w-[600px]">
+                        <thead>
+                          <tr className="border-b border-n-6">
+                            <th className="text-left py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">Country</th>
+                            <th className="text-left py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">Currency</th>
+                            <th className="text-right py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">1 INR =</th>
+                            <th className="text-right py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">1 Foreign =</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {liveRates.map((rate, index) => (
+                            <tr
+                              key={index}
+                              className="border-b border-n-6/50 hover:bg-n-7/30 transition-colors"
+                            >
+                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-2 text-xs sm:text-sm">
+                                <span className="mr-2">{rate.flag}</span>
+                                <span className="hidden sm:inline">{rate.name}</span>
+                                <span className="sm:hidden">{rate.code}</span>
+                              </td>
+                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-2 font-semibold text-xs sm:text-sm">
+                                {rate.code}
+                              </td>
+                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-2 text-right text-xs sm:text-sm">
+                                {rate.rate} {rate.code}
+                              </td>
+                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-color-1 text-right font-semibold text-xs sm:text-sm">
+                                ₹{rate.inrRate}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
                 
-                <div className="mt-6 p-4 bg-n-7/50 border border-n-6 rounded-xl">
-                  <p className="body-2 text-n-2 text-center">
+                <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-n-7/50 border border-n-6 rounded-xl">
+                  <p className="body-2 text-n-2 text-center text-xs sm:text-sm md:text-base">
                     <strong className="text-n-1">Note:</strong> Rates are updated in real-time. 
                     For transaction-specific rates, please{" "}
                     <a
@@ -225,7 +228,7 @@ const CurrencyConverter = () => {
                           "Hi Shivalix Forex, I need transaction-specific forex rates from the Currency Converter page."
                         )
                       }
-                      className="text-color-1 hover:underline"
+                      className="text-color-1 hover:underline break-all sm:break-normal"
                     >
                       contact us on WhatsApp
                     </a>
@@ -236,17 +239,17 @@ const CurrencyConverter = () => {
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="bg-n-8 border border-n-6 rounded-3xl p-8 lg:p-12">
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-n-8 border border-n-6 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                   {/* From Currency */}
                   <div>
-                    <label className="block body-2 text-n-1 mb-3">
+                    <label className="block body-2 text-n-1 mb-2 sm:mb-3 text-sm sm:text-base">
                       From Currency
                     </label>
                     <select
                       value={fromCurrency}
                       onChange={(e) => setFromCurrency(e.target.value)}
-                      className="w-full h-12 px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-2 focus:outline-none focus:border-color-1 transition-colors"
+                      className="w-full h-11 sm:h-12 px-3 sm:px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-2 focus:outline-none focus:border-color-1 transition-colors text-sm sm:text-base"
                     >
                       {currencies.map((currency) => (
                         <option key={currency.code} value={currency.code}>
@@ -258,13 +261,13 @@ const CurrencyConverter = () => {
 
                   {/* To Currency */}
                   <div>
-                    <label className="block body-2 text-n-1 mb-3">
+                    <label className="block body-2 text-n-1 mb-2 sm:mb-3 text-sm sm:text-base">
                       To Currency
                     </label>
                     <select
                       value={toCurrency}
                       onChange={(e) => setToCurrency(e.target.value)}
-                      className="w-full h-12 px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-2 focus:outline-none focus:border-color-1 transition-colors"
+                      className="w-full h-11 sm:h-12 px-3 sm:px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-2 focus:outline-none focus:border-color-1 transition-colors text-sm sm:text-base"
                     >
                       {currencies.map((currency) => (
                         <option key={currency.code} value={currency.code}>
@@ -276,18 +279,18 @@ const CurrencyConverter = () => {
                 </div>
 
                 {/* Swap Button */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-4 sm:mb-6">
                   <button
                     onClick={handleSwap}
-                    className="p-3 bg-n-7 border border-n-6 rounded-xl hover:bg-n-6 transition-colors"
+                    className="p-2 sm:p-3 bg-n-7 border border-n-6 rounded-xl hover:bg-n-6 transition-colors"
                     aria-label="Swap currencies"
                   >
                     <svg
-                      width="24"
-                      height="24"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
                       fill="none"
-                      className="text-n-1"
+                      className="text-n-1 sm:w-6 sm:h-6"
                     >
                       <path
                         d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"
@@ -301,8 +304,8 @@ const CurrencyConverter = () => {
                 </div>
 
                 {/* Amount Input */}
-                <div className="mb-6">
-                    <label className="block body-2 text-n-1 mb-3">
+                <div className="mb-4 sm:mb-6">
+                    <label className="block body-2 text-n-1 mb-2 sm:mb-3 text-sm sm:text-base">
                       Amount
                     </label>
                     <input
@@ -311,16 +314,16 @@ const CurrencyConverter = () => {
                       onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
                       min="0"
                       step="0.01"
-                      className="w-full h-14 px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-1 focus:outline-none focus:border-color-1 transition-colors"
+                      className="w-full h-12 sm:h-14 px-3 sm:px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-1 focus:outline-none focus:border-color-1 transition-colors text-sm sm:text-base"
                       placeholder="Enter amount"
                     />
                 </div>
 
                 {/* Convert Button */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   <Button
                     onClick={fetchExchangeRate}
-                    className="w-full"
+                    className="w-full text-sm sm:text-base"
                     disabled={loading}
                   >
                     {loading ? "Fetching rates..." : "Get Live Rate"}
@@ -329,21 +332,21 @@ const CurrencyConverter = () => {
 
                 {/* Error Message */}
                 {error && (
-                  <div className="mb-6 p-4 bg-color-3/10 border border-color-3 rounded-xl">
-                    <p className="body-2 text-color-3">{error}</p>
+                  <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-color-3/10 border border-color-3 rounded-xl">
+                    <p className="body-2 text-color-3 text-sm sm:text-base">{error}</p>
                   </div>
                 )}
 
                 {/* Conversion Result */}
                 {convertedAmount !== null && !error && (
-                  <div className="bg-gradient-to-br from-color-1/10 to-color-2/10 border border-color-1/20 rounded-2xl p-8 text-center">
-                    <p className="body-2 text-n-2 mb-2">Exchange Rate</p>
-                    <p className="h3 mb-4 text-color-1">
+                  <div className="bg-gradient-to-br from-color-1/10 to-color-2/10 border border-color-1/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 text-center">
+                    <p className="body-2 text-n-2 mb-2 text-sm sm:text-base">Exchange Rate</p>
+                    <p className="h3 mb-3 sm:mb-4 text-color-1 text-lg sm:text-xl md:text-2xl lg:text-3xl break-words">
                       1 {fromCurrency} = {exchangeRate?.toFixed(4)} {toCurrency}
                     </p>
-                    <div className="h-px bg-n-6 my-6"></div>
-                    <p className="body-2 text-n-2 mb-2">Converted Amount</p>
-                    <p className="h2 text-n-1">
+                    <div className="h-px bg-n-6 my-4 sm:my-6"></div>
+                    <p className="body-2 text-n-2 mb-2 text-sm sm:text-base">Converted Amount</p>
+                    <p className="h2 text-n-1 text-xl sm:text-2xl md:text-3xl break-words">
                       {amount.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
@@ -358,7 +361,7 @@ const CurrencyConverter = () => {
                       </span>
                     </p>
                     {lastUpdated && (
-                      <p className="caption text-n-2 mt-4">
+                      <p className="caption text-n-2 mt-3 sm:mt-4 text-xs sm:text-sm">
                         Last updated: {lastUpdated}
                       </p>
                     )}
@@ -366,8 +369,8 @@ const CurrencyConverter = () => {
                 )}
 
                 {/* Info Note */}
-                <div className="mt-6 p-4 bg-n-7/50 border border-n-6 rounded-xl">
-                  <p className="body-2 text-n-2">
+                <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-n-7/50 border border-n-6 rounded-xl">
+                  <p className="body-2 text-n-2 text-xs sm:text-sm md:text-base">
                     <strong className="text-n-1">Note:</strong> Exchange rates
                     are updated in real-time from market data. Rates may vary
                     slightly from actual transaction rates. For accurate rates
@@ -379,7 +382,7 @@ const CurrencyConverter = () => {
                           "Hi Shivalix Forex, I need accurate forex rates for my transaction from the Currency Converter page."
                         )
                       }
-                      className="text-color-1 hover:underline"
+                      className="text-color-1 hover:underline break-all sm:break-normal"
                     >
                       contact our sales team on WhatsApp
                     </a>

@@ -48,6 +48,11 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 @layer base {
     body {
         @apply font-sans bg-n-8 text-n-13 text-base;
@@ -178,8 +183,20 @@
 }
 
 .fs36 {
-    font-size: 36px;
+    font-size: 24px;
     line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .fs36 {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .fs36 {
+        font-size: 36px;
+    }
 }
 
 .fw600 {

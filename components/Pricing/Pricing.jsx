@@ -10,7 +10,7 @@ import { LeftLine, RightLine } from "../design/Pricing";
 const Pricing = () => {
   return (
     <>
-      <Section className="overflow-hidden bg-n-1" id="pricing">
+      <Section className="overflow-x-hidden bg-n-1" id="pricing">
         <div className="container relative z-2">
           <div className="hidden relative justify-center mb-[6.5rem] lg:flex">
             <Image
@@ -40,7 +40,7 @@ const Pricing = () => {
             <LeftLine />
             <RightLine />
           </div>
-          <div className="flex justify-center mt-10 text-xs font-bold font-code tracking-wider">
+          <div className="flex justify-center mt-6 sm:mt-8 md:mt-10 text-xs font-bold font-code tracking-wider px-4">
             <Link
               href={
                 "https://wa.me/919599516159?text=" +
@@ -48,7 +48,7 @@ const Pricing = () => {
                   "Hi Shivalix Forex, I want to share my forex requirement from the website."
                 )
               }
-              className="border-b border-black text-black hover:border-none hover:text-color-1 transition-colors"
+              className="border-b border-black text-black hover:border-none hover:text-color-1 transition-colors text-center"
             >
               SHARE YOUR REQUIREMENT
             </Link>

@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider>
           <div className="w-full bg-n-1 border-b border-stroke-1">
-            <div className="container flex flex-col items-center justify-center gap-1 py-2 text-xs text-n-13 md:flex-row md:justify-between">
+            <div className="container flex flex-col items-center justify-center gap-1 py-2 text-xs text-n-13 md:flex-row md:justify-between px-4 sm:px-5">
               <a
                 href="mailto:shivalixforex@gmail.com"
-                className="hover:text-color-1 transition-colors"
+                className="hover:text-color-1 transition-colors text-center break-all sm:break-normal"
               >
                 Email: shivalixforex@gmail.com
               </a>

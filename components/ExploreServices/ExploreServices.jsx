@@ -57,25 +57,25 @@ const ExploreServices = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="relative p-6 lg:p-8 border border-stroke-1 rounded-3xl bg-n-1 hover:border-color-1/50 hover-lift card-glow transition-all duration-300"
+                className="relative p-4 sm:p-6 lg:p-8 border border-stroke-1 rounded-2xl sm:rounded-3xl bg-n-1 hover:border-color-1/50 hover-lift card-glow transition-all duration-300"
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-color-1/10 flex items-center justify-center">
+                <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-color-1/10 flex items-center justify-center">
                     <Image
                       src={assets.check}
                       alt=""
                       width={20}
                       height={20}
-                      className="text-color-1"
+                      className="text-color-1 w-4 h-4 sm:w-5 sm:h-5"
                     />
                   </div>
-                  <h4 className="h6 text-black flex-1">{service.title}</h4>
+                  <h4 className="h6 text-black flex-1 text-base sm:text-lg">{service.title}</h4>
                 </div>
-                <p className="body-2 text-black">{service.description}</p>
+                <p className="body-2 text-black text-sm sm:text-base">{service.description}</p>
               </div>
             ))}
           </div>
