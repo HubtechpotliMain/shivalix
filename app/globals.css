@@ -10,6 +10,38 @@
     --font-sora: "Sora", sans-serif;
     --font-code: "Source Code Pro", monospace;
     --font-grotesk: "Space Grotesk", sans-serif;
+
+    --color-n-1: 255 255 255;
+    --color-n-2: 247 248 252;
+    --color-n-3: 236 239 246;
+    --color-n-4: 220 225 238;
+    --color-n-5: 195 202 220;
+    --color-n-6: 158 171 194;
+    --color-n-7: 113 128 160;
+    --color-n-8: 244 246 251;
+    --color-n-9: 225 230 242;
+    --color-n-10: 204 212 229;
+    --color-n-11: 168 180 204;
+    --color-n-12: 142 156 184;
+    --color-n-13: 31 42 55;
+    --color-stroke-1: 227 230 240;
+}
+
+[data-theme="dark"] {
+    --color-n-1: 255 255 255;
+    --color-n-2: 202 198 221;
+    --color-n-3: 173 168 195;
+    --color-n-4: 117 113 133;
+    --color-n-5: 63 58 82;
+    --color-n-6: 37 33 52;
+    --color-n-7: 21 19 29;
+    --color-n-8: 14 12 21;
+    --color-n-9: 71 64 96;
+    --color-n-10: 67 67 92;
+    --color-n-11: 27 27 46;
+    --color-n-12: 46 42 65;
+    --color-n-13: 108 114 117;
+    --color-stroke-1: 38 36 44;
 }
 
 * {
@@ -18,7 +50,53 @@
 
 @layer base {
     body {
-        @apply font-sans bg-n-8 text-n-1 text-base;
+        @apply font-sans bg-n-8 text-n-13 text-base;
+    }
+
+    [data-theme="dark"] body {
+        color: rgb(var(--color-n-1));
+    }
+
+    /* Ensure all headings are visible in light theme */
+    h1, h2, h3, h4, h5, h6 {
+        color: rgb(var(--color-n-13));
+    }
+
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4,
+    [data-theme="dark"] h5,
+    [data-theme="dark"] h6 {
+        color: rgb(var(--color-n-1));
+    }
+
+    /* Ensure paragraphs and body text are visible */
+    p {
+        color: rgb(var(--color-n-13));
+    }
+
+    [data-theme="dark"] p {
+        color: rgb(var(--color-n-2));
+    }
+
+    /* Ensure utility classes respect theme */
+    [data-theme="dark"] .h1,
+    [data-theme="dark"] .h2,
+    [data-theme="dark"] .h3,
+    [data-theme="dark"] .h4,
+    [data-theme="dark"] .h5,
+    [data-theme="dark"] .h6 {
+        color: rgb(var(--color-n-1));
+    }
+
+    [data-theme="dark"] .body-1,
+    [data-theme="dark"] .body-2 {
+        color: rgb(var(--color-n-2));
+    }
+
+    [data-theme="dark"] .tagline {
+        color: rgb(var(--color-n-3));
     }
 }
 
@@ -85,3 +163,134 @@
 .-rotate-360 {
     @apply rotate-[-360deg];
 }
+
+/* Custom classes for heading */
+.txt-grad1 {
+    background: linear-gradient(135deg, #AC6AFF 0%, #7ADB78 50%, #FFC876 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.fontstyle1 {
+    font-family: var(--font-sora);
+    font-style: normal;
+}
+
+.fs36 {
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+.fw600 {
+    font-weight: 600;
+}
+
+.aos-init {
+    opacity: 1;
+}
+
+/* Modern high-tech effects */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(172, 106, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(172, 106, 255, 0.6); }
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Modern card glow effect */
+.card-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(172, 106, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-glow:hover::before {
+    opacity: 1;
+}
+
+/* Text gradient animation */
+.txt-grad1 {
+    background: linear-gradient(135deg, #AC6AFF 0%, #7ADB78 50%, #FFC876 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+/* Ensure text visibility in light theme sections */
+.bg-n-1 h1:not(.txt-grad1),
+.bg-n-1 h2:not(.txt-grad1),
+.bg-n-1 h3:not(.txt-grad1),
+.bg-n-1 h4:not(.txt-grad1),
+.bg-n-1 h5:not(.txt-grad1),
+.bg-n-1 h6:not(.txt-grad1),
+.bg-n-1 .h1:not(.txt-grad1),
+.bg-n-1 .h2:not(.txt-grad1),
+.bg-n-1 .h3:not(.txt-grad1),
+.bg-n-1 .h4:not(.txt-grad1),
+.bg-n-1 .h5:not(.txt-grad1),
+.bg-n-1 .h6:not(.txt-grad1),
+.bg-n-1 p:not([class*="text-color-"]),
+.bg-n-1 .body-1:not([class*="text-color-"]),
+.bg-n-1 .body-2:not([class*="text-color-"]),
+.bg-n-1 li:not([class*="text-color-"]),
+.bg-n-1 span:not([class*="text-color-"]) {
+    color: #000000 !important;
+}
+
+/* Preserve brand colors */
+.bg-n-1 [class*="text-color-"] {
+    color: inherit !important;
+}
+
+

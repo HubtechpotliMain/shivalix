@@ -1,6 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
+
+const withOpacityValue = (variable) => {
+  return ({ opacityValue }) => {
+    if (opacityValue === undefined) {
+      return `rgb(var(${variable}))`;
+    }
+
+    return `rgb(var(${variable}) / ${opacityValue})`;
+  };
+};
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,22 +30,22 @@ module.exports = {
           6: "#FF98E2",
         },
         stroke: {
-          1: "#26242C",
+          1: withOpacityValue("--color-stroke-1"),
         },
         n: {
-          1: "#FFFFFF",
-          2: "#CAC6DD",
-          3: "#ADA8C3",
-          4: "#757185",
-          5: "#3F3A52",
-          6: "#252134",
-          7: "#15131D",
-          8: "#0E0C15",
-          9: "#474060",
-          10: "#43435C",
-          11: "#1B1B2E",
-          12: "#2E2A41",
-          13: "#6C7275",
+          1: withOpacityValue("--color-n-1"),
+          2: withOpacityValue("--color-n-2"),
+          3: withOpacityValue("--color-n-3"),
+          4: withOpacityValue("--color-n-4"),
+          5: withOpacityValue("--color-n-5"),
+          6: withOpacityValue("--color-n-6"),
+          7: withOpacityValue("--color-n-7"),
+          8: withOpacityValue("--color-n-8"),
+          9: withOpacityValue("--color-n-9"),
+          10: withOpacityValue("--color-n-10"),
+          11: withOpacityValue("--color-n-11"),
+          12: withOpacityValue("--color-n-12"),
+          13: withOpacityValue("--color-n-13"),
         },
       },
       fontFamily: {
@@ -91,37 +102,37 @@ module.exports = {
             {},
         },
         ".h1": {
-          "@apply font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[3.25rem] lg:leading-[4.0625rem] xl:text-[3.75rem] xl:leading-[4.5rem]":
+          "@apply font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[3.25rem] lg:leading-[4.0625rem] xl:text-[3.75rem] xl:leading-[4.5rem] text-n-13":
             {},
         },
         ".h2": {
-          "@apply text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight":
+          "@apply text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight text-n-13":
             {},
         },
         ".h3": {
-          "@apply text-[2rem] leading-normal md:text-[2.5rem]": {},
+          "@apply text-[2rem] leading-normal md:text-[2.5rem] text-n-13": {},
         },
         ".h4": {
-          "@apply text-[2rem] leading-normal": {},
+          "@apply text-[2rem] leading-normal text-n-13": {},
         },
         ".h5": {
-          "@apply text-2xl leading-normal": {},
+          "@apply text-2xl leading-normal text-n-13": {},
         },
         ".h6": {
-          "@apply font-semibold text-lg leading-8": {},
+          "@apply font-semibold text-lg leading-8 text-n-13": {},
         },
         ".body-1": {
-          "@apply text-[0.875rem] leading-[1.5rem] md:text-[1rem] md:leading-[1.75rem] lg:text-[1.25rem] lg:leading-8":
+          "@apply text-[0.875rem] leading-[1.5rem] md:text-[1rem] md:leading-[1.75rem] lg:text-[1.25rem] lg:leading-8 text-n-13":
             {},
         },
         ".body-2": {
-          "@apply font-light text-[0.875rem] leading-6 md:text-base": {},
+          "@apply font-light text-[0.875rem] leading-6 md:text-base text-n-13": {},
         },
         ".caption": {
-          "@apply text-sm": {},
+          "@apply text-sm text-n-4": {},
         },
         ".tagline": {
-          "@apply font-grotesk font-light text-xs tracking-tagline uppercase":
+          "@apply font-grotesk font-light text-xs tracking-tagline uppercase text-n-4":
             {},
         },
         ".quote": {

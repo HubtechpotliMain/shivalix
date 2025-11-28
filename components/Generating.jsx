@@ -6,14 +6,14 @@ const Generating = ({ className }) => {
   return (
     <>
       <div
-        className={`flex items-center bg-n-8/80 rounded-[1.7rem] px-6 h-[3.5rem] gap-4 ${
+        className={`flex items-center bg-n-8/80 rounded-[1.7rem] px-6 h-[3.5rem] gap-4 border border-n-6 ${
           className || ""
         }`}
       >
         <div className="w-5 h-5">
           <Image src={assets.loading} alt="" />
         </div>
-        AI is generating|
+        <p className="body-2 text-n-13">Get live rates</p>
       </div>
     </>
   );

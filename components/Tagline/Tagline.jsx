@@ -4,7 +4,7 @@ import React from "react";
 const Tagline = ({ className, children }) => {
   return (
     <>
-      <div className={`tagline flex items-center ${className || ""}`}>
+      <div className={`tagline flex items-center text-black ${className || ""}`}>
         {brackets("left")}
         <div className="mx-3">{children}</div>
         {brackets("right")}

@@ -12,6 +12,15 @@ import CompanyLogos from "./CompanyLogos";
 
 const Hero = () => {
   const parallaxRef = useRef(null);
+  const videoRef = useRef(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      // Ensure video loads at highest quality
+      videoRef.current.load();
+    }
+  }, []);
+
   return (
     <Section
       className="pt-[12rem] -mt-[5.25rem]"
@@ -22,10 +31,10 @@ const Hero = () => {
     >
       <div className="relative container" ref={parallaxRef}>
         <div className="relative z-1 text-center max-w-[62rem] mx-auto mb-[4rem] md:mb-20 lg:mb-[6rem]">
-          <h1 className="h1 mb-6">
-            Explore the Possibilities of&nbsp;AI&nbsp;Chatting with {` `}
-            <span className="relative inline-block">
-              Brainwave
+          <h1 className="h1 mb-6 text-n-1">
+            Forex &amp; Money Transfers made simple with{" "}
+            <span className="relative inline-block txt-grad1">
+              Shivalix Forex
               <Image
                 src={assets.curve}
                 alt="curve"
@@ -34,22 +43,39 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            Unleash the power of AI within Brainwave. Upgrade your productivity
-            with Brainwave, the open AI chat app.
+            Get the best exchange rates on currency, forex cards and outward
+            remittances from India. Fast credit, transparent pricing, and expert
+            help at every step.
           </p>
-          <Button white>get started</Button>
+          <Button white href="/currency-converter">get live rates</Button>
         </div>
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl lg:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
             <div className="relative bg-n-8 rounded-[1rem]">
               <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" />
               <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]">
-                <Image
-                  src={assets.robot}
-                  alt="robot"
-                  className="w-full scale-[1.7] translate-y-[8%] md:scale-[1] md:-translate-y-[10%] lg:-translate-y-[23%]"
-                  // width={1440}
-                  // height={1800}
+                <video
+                  ref={videoRef}
+                  src="/videos/hero.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full"
+                  style={{
+                    objectFit: "cover",
+                    minHeight: "100%",
+                    minWidth: "100%",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  onLoadedData={(e) => {
+                    // Ensure video plays at full quality
+                    if (e.target) {
+                      e.target.currentTime = 0;
+                    }
+                  }}
                 />
                 <Generating className="absolute bottom-5 left-5 right-4 md:bottom-8 md:w-[31rem] md:left-1/2 md:-translate-x-1/2" />
               </div>
@@ -66,7 +92,7 @@ const Hero = () => {
               </ul>
               <Notification
                 className={`hidden absolute -right-[5.4rem] bottom-[11rem] w-[18rem] xl:flex`}
-                title="Code generation"
+                title="Zero-fee student forex card"
               />
             </ScrollParallax>
           </div>

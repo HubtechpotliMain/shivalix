@@ -1,3 +1,4 @@
+ "use client";
 import React from "react";
 import Section from "../Section";
 import { collabApps, collabContent, collabText } from "@/constants";
@@ -5,6 +6,7 @@ import Image from "next/image";
 import { assets } from "@/app/assets";
 import Button from "../Button/Button";
 import { LeftCurve, RightCurve } from "../design/Collaboration";
+import { openWhatsApp } from "../utils/openWhatsApp";
 
 const Collaboratin = () => {
   return (
@@ -12,26 +14,32 @@ const Collaboratin = () => {
       <Section crosses>
         <div className="container lg:flex">
           <div className="max-w-[25rem]">
-            <h2 className="h2 mb-4 md:mb-8">
-              AI chat app for seamless collaboration
+            <h2 className="h2 mb-4 md:mb-8 text-n-1">
+              Forex expertise across every journey
             </h2>
             <ul className="max-w-[22rem] mb-10 md:mb-14">
               {collabContent.map((item) => (
                 <li key={item.id} className="mb-3 py-3">
                   <div className="flex items-center">
                     <Image src={assets.check} alt="" />
-                    <h6 className="body-2 ml-5">{item.title}</h6>
+                    <h6 className="body-2 ml-5 text-n-1">{item.title}</h6>
                   </div>
                   {item.text && (
-                    <p className="body-2 text-n-4 mt-3">{item.text}</p>
+                    <p className="body-2 text-n-2 mt-3">{item.text}</p>
                   )}
                 </li>
               ))}
             </ul>
-            <Button>try it now</Button>
+            <Button
+              onClick={() =>
+                openWhatsApp("talking to a forex expert about my requirements")
+              }
+            >
+              talk to an expert
+            </Button>
           </div>
           <div className="lg:ml-auto xl:w-[38rem] mt-4">
-            <p className="body-2 text-n-4 mb-4 md:mb-16 lg:mb-28 lg:w-[22rem] lg:mx-auto">
+            <p className="body-2 text-n-2 mb-4 md:mb-16 lg:mb-28 lg:w-[22rem] lg:mx-auto">
               {collabText}
             </p>
             <div className="w-[22rem] border border-n-6 rounded-full aspect-square relative left-1/2 -translate-x-1/2 flex scale-75 md:scale-100">

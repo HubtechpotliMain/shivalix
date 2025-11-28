@@ -26,11 +26,34 @@ const Header = () => {
       <div
         className={`${
           openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
-        } w-full left-0 fixed top-0 z-50 border-n-6 border-b lg:bg-n-8/90`}
+        } w-full left-0 fixed top-0 z-50 border-b border-n-6 lg:bg-n-8/90`}
       >
-        <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
+        {/* Top contact bar */}
+        <div className="hidden md:flex items-center justify-center gap-6 px-5 lg:px-7.5 xl:px-10 h-9 bg-n-1 border-b border-stroke-1 text-xs text-n-13">
+          <a
+            href="mailto:shivalixforex@gmail.com"
+            className="hover:text-color-1 transition-colors"
+          >
+            Email: shivalixforex@gmail.com
+          </a>
+          <span className="text-n-6">|</span>
+          <a
+            href="tel:+919599516159"
+            className="hover:text-color-1 transition-colors"
+          >
+            Call Us: 9599516159
+          </a>
+        </div>
+
+        <div className="flex items-center px-5 lg:px-7.5 xl:px-10 py-3 lg:py-4">
           <Link href={"/"} className="w-[12rem] block xl:mr-8">
-            <Image src={assets.brainwave} alt="" />
+            <Image
+              src={"/logo/image.png"}
+              alt="Shivalix Forex"
+              width={192}
+              height={48}
+              priority
+            />
           </Link>
           <nav
             className={`${
@@ -44,7 +67,7 @@ const Header = () => {
                   key={item.id}
                   className={`${
                     item.onlyMobile && "lg:hidden"
-                  } uppercase text-2xl text-n-1 transition-colors hover:text-color-1 font-code relative px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs font-semibold xl:px-12 lg:leading-5 lg:hover:text-n-1 ${
+                  } uppercase text-2xl text-n-1 transition-colors hover:text-color-1 font-code relative px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs font-semibold xl:px-12 lg:leading-5 lg:hover:text-color-1 ${
                     item.title == "new account" && "mr-8"
                   }`}
                 >
@@ -55,16 +78,18 @@ const Header = () => {
             <HambugerMenu />
           </nav>
           <Link
-            href={`/signup`}
-            className="hidden uppercase button transition-colors hover:text-n-1 mr-8 lg:block"
+            href={
+              "https://wa.me/919599516159?text=" +
+              encodeURIComponent(
+                "Hi Shivalix Forex, I would like to book forex from the website."
+              )
+            }
+            className="ml-auto"
           >
-            New account
-          </Link>
-          <Link href={`/login`}>
-            <Button className="hidden lg:flex">Sign In</Button>
+            <Button className="hidden lg:flex">Book forex</Button>
           </Link>
           <Button
-            className="ml-auto lg:hidden"
+            className="ml-2 lg:hidden"
             px="px-3"
             onClick={toggleNavigation}
           >

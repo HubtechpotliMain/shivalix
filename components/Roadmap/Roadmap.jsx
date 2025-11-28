@@ -11,7 +11,11 @@ const Roadmap = () => {
     <>
       <Section className="overflow-hidden" id="roadmap">
         <div className="container md:pb-10">
-          <Heading title="What we're working on" tag="READY TO GET STARTED" />
+          <Heading
+            title="6 easy steps to book your forex"
+            tag="HOW IT WORKS"
+            text="From login to doorstep delivery, every task is trackable and RBI compliant."
+          />
 
           <div className="relative grid md:grid-cols-2 gap-6 md:gap-4 md:pb-[7rem]">
             {roadmap.map((item) => {
@@ -36,7 +40,7 @@ const Roadmap = () => {
                     <div className="relative z-1">
                       <div className="flex items-center justify-between max-w-[27rem] mb-8 md:mb-20">
                         <Tagline>{item.date}</Tagline>
-                        <div className="flex items-center px-4 py-1 bg-n-1 text-n-8 gap-3 rounded">
+                        <div className="flex items-center px-4 py-1 bg-n-13 text-n-1 gap-3 rounded">
                           <Image
                             src={
                               item.status === "done"
@@ -45,7 +49,7 @@ const Roadmap = () => {
                             }
                             alt=""
                           />
-                          <div className="tagline">{status}</div>
+                          <div className="tagline text-n-1">{status}</div>
                         </div>
                       </div>
                       <div className="mb-10 -my-10 -mx-15">
@@ -57,8 +61,8 @@ const Roadmap = () => {
                           //   className="w-full"
                         />
                       </div>
-                      <h4 className="h4">{item.title}</h4>
-                      <p className="body-2 text-n-4">{item.text}</p>
+                      <h4 className="h4 text-n-1">{item.title}</h4>
+                      <p className="body-2 text-n-2">{item.text}</p>
                     </div>
                   </div>
                 </div>
