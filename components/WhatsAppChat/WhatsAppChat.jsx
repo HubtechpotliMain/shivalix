@@ -14,15 +14,16 @@ const WhatsAppChat = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     setMounted(true);
-    return () => setMounted(false);
   }, []);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && mounted) {
       scrollToBottom();
       disablePageScroll();
     } else {
@@ -32,7 +33,7 @@ const WhatsAppChat = ({ isOpen, onClose }) => {
     return () => {
       enablePageScroll();
     };
-  }, [isOpen, selectedService]);
+  }, [isOpen, selectedService, mounted]);
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
@@ -51,7 +52,14 @@ const WhatsAppChat = ({ isOpen, onClose }) => {
     setSelectedService(null);
   };
 
-  if (!isOpen || !mounted) return null;
+  if (!isOpen || !mounted) {
+    return null;
+  }
+
+  // Ensure document.body exists before creating portal
+  if (typeof window === 'undefined' || !document.body) {
+    return null;
+  }
 
   const chatContent = (
     <>
@@ -229,7 +237,12 @@ const WhatsAppChat = ({ isOpen, onClose }) => {
     </>
   );
 
-  return typeof window !== 'undefined' ? createPortal(chatContent, document.body) : null;
+  try {
+    return createPortal(chatContent, document.body);
+  } catch (error) {
+    console.error('Error creating portal:', error);
+    return null;
+  }
 };
 
 export default WhatsAppChat;

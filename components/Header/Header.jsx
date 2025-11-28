@@ -137,7 +137,7 @@ const Header = () => {
             onClick={() => {
               setOpenWhatsAppChat(true);
             }}
-            className="ml-auto lg:flex"
+            className="ml-auto"
           >
             Book forex
           </Button>
