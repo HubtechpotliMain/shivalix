@@ -19,20 +19,20 @@ const ExecutiveTeam = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <div className="relative w-full max-w-md">
-              <div className="relative overflow-hidden rounded-3xl border border-stroke-1 bg-n-1 p-8 shadow-[0_15px_45px_rgba(15,23,42,0.08)] hover-lift card-glow transition-all duration-300">
-                <div className="relative aspect-square w-full overflow-hidden rounded-2xl mb-6">
+            <div className="relative w-full max-w-sm sm:max-w-md">
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-stroke-1 bg-n-1 p-4 sm:p-6 md:p-8 shadow-[0_15px_45px_rgba(15,23,42,0.08)] hover-lift card-glow transition-all duration-300">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl sm:rounded-2xl mb-4 sm:mb-6">
                   <Image
                     src={assets.ownerImage}
                     alt="Owner - Shivalix Forex"
                     className="w-full h-full object-cover"
                     fill
-                    sizes="(max-width: 768px) 100vw, 400px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, 400px"
                   />
                 </div>
                 <div className="text-center">
-                  <h4 className="h5 mb-2 text-black">Owner</h4>
-                  <p className="body-2 text-black">Shivalix Forex Services Pvt. Ltd.</p>
+                  <h4 className="h5 mb-2 text-black text-lg sm:text-xl md:text-2xl">Owner</h4>
+                  <p className="body-2 text-black text-sm sm:text-base">Shivalix Forex Services Pvt. Ltd.</p>
                 </div>
               </div>
             </div>

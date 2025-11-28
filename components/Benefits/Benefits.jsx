@@ -5,7 +5,6 @@ import { benefits } from "@/constants";
 import "./Benefits.scss";
 import Image from "next/image";
 import Arrow from "@/app/assets/svg/Arrow";
-import Button from "../Button/Button";
 import { GradientLight } from "../design/Benefits";
 import ClipPath from "@/app/assets/svg/ClipPath";
 const Benefits = () => {
@@ -21,20 +20,17 @@ const Benefits = () => {
               Value-packed benefits for leisure travelers, students, expats and enterprises.
             </p>
           </div>
-          <div className="flex flex-wrap gap-10 mb-10">
+          <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-10 justify-center">
             {benefits.map((item) => (
               <div
                 key={item.id}
-                className="benefitsBgUrlCss block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"
+                className="benefitsBgUrlCss block relative p-0.5 bg-no-repeat bg-[length:100%_100%] w-full sm:w-[calc(50%-0.5rem)] md:max-w-[24rem]"
               >
-                <div className="relative z-2 flex flex-col min-h-[22rem] p-[2.4rem] pointer-events-none">
-                  <h5 className="h5 mb-5 text-black">{item.title}</h5>
-                  <p className="body-2 mb-6 text-black">{item.text}</p>
+                <div className="relative z-2 flex flex-col min-h-[18rem] sm:min-h-[20rem] md:min-h-[22rem] p-4 sm:p-6 md:p-[2.4rem] pointer-events-none">
+                  <h5 className="h5 mb-3 sm:mb-4 md:mb-5 text-black text-lg sm:text-xl md:text-2xl">{item.title}</h5>
+                  <p className="body-2 mb-4 sm:mb-5 md:mb-6 text-black text-sm sm:text-base">{item.text}</p>
                   <div className="flex items-center mt-auto">
-                    <Image src={item.iconUrl} alt="" width={48} height={48} />
-                    <Button className="ml-auto flex items-center gap-2" px="px-4">
-                      Explore more
-                    </Button>
+                    <Image src={item.iconUrl} alt="" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
                   </div>
                 </div>
                 {item.light && <GradientLight />}

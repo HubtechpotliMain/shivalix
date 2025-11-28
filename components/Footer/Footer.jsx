@@ -6,26 +6,26 @@ const Footer = () => {
   return (
     <footer className="relative border-t border-n-6 bg-n-8">
       <div className="container py-12 lg:py-16">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8">
           {/* Company Info */}
-          <div>
-            <h5 className="h6 mb-4 text-n-1">Shivalix Forex</h5>
-            <p className="body-2 text-n-2 mb-4">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h5 className="h6 mb-3 sm:mb-4 text-n-1 text-base sm:text-lg">Shivalix Forex</h5>
+            <p className="body-2 text-n-2 mb-4 text-sm sm:text-base">
               Your trusted partner for currency exchange, forex cards, and money transfers from India.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h5 className="h6 mb-4 text-n-1">Quick Links</h5>
-            <ul className="space-y-3">
+            <h5 className="h6 mb-3 sm:mb-4 text-n-1 text-base sm:text-lg">Quick Links</h5>
+            <ul className="space-y-2 sm:space-y-3">
               {navigation
                 .filter((item) => !item.onlyMobile)
                 .map((item) => (
                   <li key={item.id}>
                     <Link
                       href={item.url}
-                      className="body-2 text-n-2 hover:text-color-1 transition-colors"
+                      className="body-2 text-n-2 hover:text-color-1 transition-colors text-sm sm:text-base"
                     >
                       {item.title}
                     </Link>
@@ -36,39 +36,39 @@ const Footer = () => {
 
           {/* Contact Us */}
           <div>
-            <h5 className="h6 mb-4 text-n-1">Contact Us</h5>
-            <ul className="space-y-3">
+            <h5 className="h6 mb-3 sm:mb-4 text-n-1 text-base sm:text-lg">Contact Us</h5>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a
                   href="tel:+919599516159"
-                  className="body-2 text-n-2 hover:text-color-1 transition-colors flex items-center gap-2"
+                  className="body-2 text-n-2 hover:text-color-1 transition-colors flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-sm sm:text-base"
                 >
-                  <span>Mobile:</span>
+                  <span className="font-semibold sm:font-normal">Mobile:</span>
                   <span>+91 95995 16159</span>
                 </a>
               </li>
               <li>
                 <a
                   href="tel:+919211217755"
-                  className="body-2 text-n-2 hover:text-color-1 transition-colors flex items-center gap-2"
+                  className="body-2 text-n-2 hover:text-color-1 transition-colors flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-sm sm:text-base"
                 >
-                  <span>Mobile:</span>
+                  <span className="font-semibold sm:font-normal">Mobile:</span>
                   <span>+91 92112 17755</span>
                 </a>
               </li>
               <li>
                 <a
                   href="tel:+911149846655"
-                  className="body-2 text-n-2 hover:text-color-1 transition-colors flex items-center gap-2"
+                  className="body-2 text-n-2 hover:text-color-1 transition-colors flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-sm sm:text-base"
                 >
-                  <span>Landline:</span>
+                  <span className="font-semibold sm:font-normal">Landline:</span>
                   <span>+91 11 4984 6655</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:shivalixforex@gmail.com"
-                  className="body-2 text-n-2 hover:text-color-1 transition-colors"
+                  className="body-2 text-n-2 hover:text-color-1 transition-colors text-sm sm:text-base break-all"
                 >
                   shivalixforex@gmail.com
                 </a>
@@ -77,27 +77,27 @@ const Footer = () => {
           </div>
 
           {/* Address */}
-          <div>
-            <h5 className="h6 mb-4 text-n-1">Address</h5>
-            <p className="body-2 text-n-2">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h5 className="h6 mb-3 sm:mb-4 text-n-1 text-base sm:text-lg">Address</h5>
+            <p className="body-2 text-n-2 text-sm sm:text-base">
               Unit No: 201, Second Floor, NDM-1, Netaji Subhash Place, Pitampura, New Delhi - 110034
             </p>
           </div>
         </div>
 
         {/* Social Media */}
-        <div className="pt-8 border-t border-n-6 mb-8">
-          <h5 className="h6 mb-4 text-n-1 text-center">Follow Us</h5>
-          <div className="flex justify-center gap-6">
+        <div className="pt-6 sm:pt-8 border-t border-n-6 mb-6 sm:mb-8">
+          <h5 className="h6 mb-3 sm:mb-4 text-n-1 text-center text-base sm:text-lg">Follow Us</h5>
+          <div className="flex justify-center gap-4 sm:gap-6">
             <a
               href="https://www.facebook.com/people/Shivalix-Forex/61578283956527/?mibextid=wwXIfr&rdid=rsPDaBMDBvY9Id7K&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1aLXG4wpio%2F%3Fmibextid%3DwwXIfr"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-n-7 border border-n-6 flex items-center justify-center hover:bg-color-1 hover:border-color-1 transition-all group"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-n-7 border border-n-6 flex items-center justify-center hover:bg-color-1 hover:border-color-1 transition-all group"
               aria-label="Facebook"
             >
               <svg
-                className="w-6 h-6 text-n-4 group-hover:text-n-1 transition-colors"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-n-4 group-hover:text-n-1 transition-colors"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -108,11 +108,11 @@ const Footer = () => {
               href="https://www.instagram.com/shivalix_forex/?igsh=MXkxOWFpNDBpc2l1&utm_source=qr#"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-n-7 border border-n-6 flex items-center justify-center hover:bg-color-1 hover:border-color-1 transition-all group"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-n-7 border border-n-6 flex items-center justify-center hover:bg-color-1 hover:border-color-1 transition-all group"
               aria-label="Instagram"
             >
               <svg
-                className="w-6 h-6 text-n-4 group-hover:text-n-1 transition-colors"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-n-4 group-hover:text-n-1 transition-colors"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -123,11 +123,11 @@ const Footer = () => {
               href="https://www.linkedin.com/company/shivalix-forex/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-n-7 border border-n-6 flex items-center justify-center hover:bg-color-1 hover:border-color-1 transition-all group"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-n-7 border border-n-6 flex items-center justify-center hover:bg-color-1 hover:border-color-1 transition-all group"
               aria-label="LinkedIn"
             >
               <svg
-                className="w-6 h-6 text-n-4 group-hover:text-n-1 transition-colors"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-n-4 group-hover:text-n-1 transition-colors"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -138,8 +138,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-n-6">
-          <p className="body-2 text-n-2 text-center">
+        <div className="pt-6 sm:pt-8 border-t border-n-6">
+          <p className="body-2 text-n-2 text-center text-xs sm:text-sm md:text-base">
             © {new Date().getFullYear()} Shivalix Forex Services Pvt. Ltd. All rights reserved.
           </p>
         </div>

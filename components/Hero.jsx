@@ -30,26 +30,26 @@ const Hero = () => {
       id="hero"
     >
       <div className="relative container" ref={parallaxRef}>
-        <div className="relative z-1 text-center max-w-[62rem] mx-auto mb-[4rem] md:mb-20 lg:mb-[6rem]">
-          <h1 className="h1 mb-6 text-n-1">
+        <div className="relative z-1 text-center max-w-[62rem] mx-auto mb-[3rem] sm:mb-[4rem] md:mb-20 lg:mb-[6rem] px-4 sm:px-0">
+          <h1 className="h1 mb-4 sm:mb-6 text-n-1">
             Forex &amp; Money Transfers made simple with{" "}
             <span className="relative inline-block txt-grad1">
               Shivalix Forex
               <Image
                 src={assets.curve}
                 alt="curve"
-                className="absolute top-full left-0 w-full xl:-m-2"
+                className="absolute top-full left-0 w-full xl:-m-2 hidden sm:block"
               />
             </span>
           </h1>
-          <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
+          <p className="body-1 max-w-3xl mx-auto mb-4 sm:mb-6 text-n-2 lg:mb-8 px-2 sm:px-0">
             Get the best exchange rates on currency, forex cards and outward
             remittances from India. Fast credit, transparent pricing, and expert
             help at every step.
           </p>
-          <Button white href="/currency-converter">get live rates</Button>
+          <Button white href="/currency-converter" className="text-sm sm:text-base">get live rates</Button>
         </div>
-        <div className="relative max-w-[23rem] mx-auto md:max-w-5xl lg:mb-24">
+        <div className="relative max-w-[20rem] sm:max-w-[23rem] mx-auto md:max-w-5xl lg:mb-24 px-4 sm:px-0">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
             <div className="relative bg-n-8 rounded-[1rem]">
               <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" />
