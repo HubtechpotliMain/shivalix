@@ -15,6 +15,9 @@ export const metadata = {
   alternates: {
     canonical: "https://shivalixforex.com/",
   },
+  verification: {
+    google: "nsA3nMxLr4hoO2tpGmfeCWXyr_TaQo6qNLZEJaCsIwQ",
+  },
   openGraph: {
     title: "Currency Exchange | Forex Cards and Money Transfer in India",
     description: "Easy and safe currency exchange, forex cards, and international money transfer services in India at best rates.",
