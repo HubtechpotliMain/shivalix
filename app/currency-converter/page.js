@@ -34,28 +34,19 @@ const CurrencyConverter = () => {
     { code: "INR", name: "Indian Rupee" },
   ];
 
-  // Top 20 countries where Indians travel or live
+  // Currencies to display in live rates
   const topCountries = [
     { code: "USD", name: "United States", flag: "🇺🇸" },
-    { code: "AED", name: "United Arab Emirates", flag: "🇦🇪" },
     { code: "GBP", name: "United Kingdom", flag: "🇬🇧" },
-    { code: "CAD", name: "Canada", flag: "🇨🇦" },
-    { code: "AUD", name: "Australia", flag: "🇦🇺" },
-    { code: "SGD", name: "Singapore", flag: "🇸🇬" },
-    { code: "SAR", name: "Saudi Arabia", flag: "🇸🇦" },
-    { code: "EUR", name: "Germany, France, Italy, Spain, Netherlands", flag: "🇪🇺" },
-    { code: "NZD", name: "New Zealand", flag: "🇳🇿" },
-    { code: "MYR", name: "Malaysia", flag: "🇲🇾" },
+    { code: "EUR", name: "Eurozone", flag: "🇪🇺" },
     { code: "THB", name: "Thailand", flag: "🇹🇭" },
-    { code: "JPY", name: "Japan", flag: "🇯🇵" },
+    { code: "SGD", name: "Singapore", flag: "🇸🇬" },
+    { code: "AED", name: "United Arab Emirates", flag: "🇦🇪" },
+    { code: "AUD", name: "Australia", flag: "🇦🇺" },
+    { code: "SAR", name: "Saudi Arabia", flag: "🇸🇦" },
     { code: "HKD", name: "Hong Kong", flag: "🇭🇰" },
-    { code: "CHF", name: "Switzerland", flag: "🇨🇭" },
-    { code: "QAR", name: "Qatar", flag: "🇶🇦" },
-    { code: "KWD", name: "Kuwait", flag: "🇰🇼" },
-    { code: "OMR", name: "Oman", flag: "🇴🇲" },
-    { code: "BHD", name: "Bahrain", flag: "🇧🇭" },
-    { code: "NOK", name: "Norway", flag: "🇳🇴" },
-    { code: "SEK", name: "Sweden", flag: "🇸🇪" },
+    { code: "CNY", name: "China", flag: "🇨🇳" },
+    { code: "CAD", name: "Canada", flag: "🇨🇦" },
   ];
 
   const fetchExchangeRate = useCallback(async () => {
@@ -168,9 +159,9 @@ const CurrencyConverter = () => {
             {/* Live Rates Table */}
             <div className="mb-8 sm:mb-12">
               <div className="bg-n-8 border border-n-6 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12">
-                <h2 className="h3 mb-4 sm:mb-6 text-n-1 text-xl sm:text-2xl md:text-3xl">Live Exchange Rates - Top 20 Countries</h2>
+                <h2 className="h3 mb-4 sm:mb-6 text-n-1 text-xl sm:text-2xl md:text-3xl">Live Exchange Rates</h2>
                 <p className="body-2 text-n-2 mb-4 sm:mb-6 text-sm sm:text-base">
-                  Real-time exchange rates for countries where Indians travel or live
+                  Real-time exchange rates for major currencies
                 </p>
                 
                 {ratesLoading ? (

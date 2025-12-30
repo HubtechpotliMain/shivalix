@@ -13,6 +13,9 @@ const Footer = () => {
             <p className="body-2 text-n-2 mb-4 text-sm sm:text-base">
               Your trusted partner for currency exchange, forex cards, and money transfers from India.
             </p>
+            <p className="body-2 text-n-2 text-sm sm:text-base">
+              <strong className="text-n-1">GSTIN:</strong> 07ABMCS4722M1ZU
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -139,8 +142,11 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="pt-6 sm:pt-8 border-t border-n-6">
-          <p className="body-2 text-n-2 text-center text-xs sm:text-sm md:text-base">
+          <p className="body-2 text-n-2 text-center text-xs sm:text-sm md:text-base mb-2">
             © {new Date().getFullYear()} Shivalix Forex Services Pvt. Ltd. All rights reserved.
+          </p>
+          <p className="body-2 text-n-2 text-center text-xs sm:text-sm md:text-base">
+            GSTIN: 07ABMCS4722M1ZU
           </p>
         </div>
       </div>

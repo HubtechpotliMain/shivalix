@@ -17,6 +17,7 @@ import ExploreServices from "@/components/ExploreServices/ExploreServices";
 import Advantage from "@/components/Advantage/Advantage";
 import EasySteps from "@/components/EasySteps/EasySteps";
 import ExecutiveTeam from "@/components/ExecutiveTeam/ExecutiveTeam";
+import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
 
 const Home = () => {
   return (
@@ -37,6 +38,7 @@ const Home = () => {
         <Advantage />
         <EasySteps />
         <ExecutiveTeam />
+        <PhotoGallery />
       </div>
 
       <ButtonGradient />

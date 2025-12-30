@@ -32,7 +32,8 @@ const ExecutiveTeam = () => {
                 </div>
                 <div className="text-center">
                   <h4 className="h5 mb-2 text-black text-lg sm:text-xl md:text-2xl">Owner</h4>
-                  <p className="body-2 text-black text-sm sm:text-base">Shivalix Forex Services Pvt. Ltd.</p>
+                  <p className="body-2 text-black text-sm sm:text-base mb-2">Shivalix Forex Services Pvt. Ltd.</p>
+                  <p className="body-2 text-black text-xs sm:text-sm">GSTIN: 07ABMCS4722M1ZU</p>
                 </div>
               </div>
             </div>
