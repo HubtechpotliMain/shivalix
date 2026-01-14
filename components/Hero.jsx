@@ -48,7 +48,7 @@ const Hero = () => {
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
             <div className="relative bg-n-8 rounded-[1rem]">
               <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" />
-              <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490] relative">
+              <div className="aspect-[4/5] rounded-b-[0.9rem] overflow-hidden md:aspect-video relative">
                 <BannerSlider />
                 <Generating className="absolute bottom-5 left-5 right-4 md:bottom-8 md:w-[31rem] md:left-1/2 md:-translate-x-1/2 z-10" />
               </div>
