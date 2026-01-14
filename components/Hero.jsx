@@ -4,22 +4,15 @@ import Image from "next/image";
 import { assets } from "@/app/assets";
 import Button from "./Button/Button";
 import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero";
-import { heroIcons, notificationImages } from "@/constants";
+import { heroIcons } from "@/constants";
 import { ScrollParallax } from "react-just-parallax";
 import Generating from "./Generating";
 import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
+import BannerSlider from "./BannerSlider";
 
 const Hero = () => {
   const parallaxRef = useRef(null);
-  const videoRef = useRef(null);
-
-  React.useEffect(() => {
-    if (videoRef.current) {
-      // Ensure video loads at highest quality
-      videoRef.current.load();
-    }
-  }, []);
 
   return (
     <Section
@@ -32,7 +25,9 @@ const Hero = () => {
       <div className="relative container" ref={parallaxRef}>
         <div className="relative z-1 text-center max-w-[62rem] mx-auto mb-[3rem] sm:mb-[4rem] md:mb-20 lg:mb-[6rem] px-4 sm:px-0">
           <h1 className="h1 mb-4 sm:mb-6 text-n-1">
-            Forex &amp; Money Transfers made simple with{" "}
+            Trusted foreign Exchange
+            <br />
+            Simple with{" "}
             <span className="relative inline-block txt-grad1">
               Shivalix Forex
               <Image
@@ -53,31 +48,9 @@ const Hero = () => {
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
             <div className="relative bg-n-8 rounded-[1rem]">
               <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" />
-              <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]">
-                <video
-                  ref={videoRef}
-                  src="/videos/hero.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full"
-                  style={{
-                    objectFit: "cover",
-                    minHeight: "100%",
-                    minWidth: "100%",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  onLoadedData={(e) => {
-                    // Ensure video plays at full quality
-                    if (e.target) {
-                      e.target.currentTime = 0;
-                    }
-                  }}
-                />
-                <Generating className="absolute bottom-5 left-5 right-4 md:bottom-8 md:w-[31rem] md:left-1/2 md:-translate-x-1/2" />
+              <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490] relative">
+                <BannerSlider />
+                <Generating className="absolute bottom-5 left-5 right-4 md:bottom-8 md:w-[31rem] md:left-1/2 md:-translate-x-1/2 z-10" />
               </div>
             </div>
             <ScrollParallax isAbsolutelyPositioned>

@@ -77,7 +77,6 @@ export const notificationImages = [notification4, notification3, notification2];
 
 export const companyLogos = [
   { id: "0", value: "1.2K+", label: "Happy customers" },
-  { id: "1", value: "22+", label: "Indian branches" },
   { id: "2", value: "650K+", label: "Bank & FX partners" },
   { id: "3", value: "48h", label: "Avg. credit time" },
 ];
@@ -91,7 +90,7 @@ export const fxServices = [
       "Lock live rates online, upload documents, and receive cash notes or traveler cheques at your doorstep within 48 working hours.",
     highlights: [
       "5%+ better than market walk-in rates with Lowest Rate Guarantee",
-      "22+ Indian branches plus doorstep KYC and delivery support",
+      "Nationwide presence plus doorstep KYC and delivery support",
       "Exotic currencies such as IDR, THB and more always in stock",
     ],
     dropdownLabel: "Currency Exchange",
@@ -195,7 +194,7 @@ export const roadmap = [
   {
     id: "2",
     title: "Confirm delivery or pickup preference",
-    text: "Opt for doorstep delivery/collection or schedule a branch visit across 22+ Indian locations.",
+    text: "Opt for doorstep delivery/collection or schedule a branch visit across our Indian locations.",
     date: "Step 03",
     status: "progress",
     imageUrl: roadmap3,
@@ -298,7 +297,7 @@ export const pricing = [
     price: null,
     features: [
       "Save 5%+ versus market walk-in rates with transparent pricing",
-      "Doorstep cash currency delivery or branch pickup in 22+ cities",
+      "Doorstep cash currency delivery or branch pickup in key cities",
       "Reload/unload support and 24/7 emergency card blocking",
     ],
   },

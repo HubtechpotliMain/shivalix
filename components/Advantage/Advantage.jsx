@@ -31,7 +31,7 @@ const Advantage = () => {
       id: 4,
       title: "Easy Access",
       description:
-        "22+ branches across India and a simple online platform.",
+        "Branches across India and a simple online platform.",
       icon: assets.check,
     },
   ];

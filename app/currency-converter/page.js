@@ -34,19 +34,19 @@ const CurrencyConverter = () => {
     { code: "INR", name: "Indian Rupee" },
   ];
 
-  // Currencies to display in live rates
+  // Currencies to display in live rates - reordered to match screenshot
   const topCountries = [
-    { code: "USD", name: "United States", flag: "🇺🇸" },
-    { code: "GBP", name: "United Kingdom", flag: "🇬🇧" },
+    { code: "USD", name: "USA", flag: "🇺🇸" },
     { code: "EUR", name: "Eurozone", flag: "🇪🇺" },
+    { code: "GBP", name: "UK", flag: "🇬🇧" },
     { code: "THB", name: "Thailand", flag: "🇹🇭" },
     { code: "SGD", name: "Singapore", flag: "🇸🇬" },
-    { code: "AED", name: "United Arab Emirates", flag: "🇦🇪" },
+    { code: "AED", name: "UAE", flag: "🇦🇪" },
+    { code: "CAD", name: "Canada", flag: "🇨🇦" },
     { code: "AUD", name: "Australia", flag: "🇦🇺" },
     { code: "SAR", name: "Saudi Arabia", flag: "🇸🇦" },
     { code: "HKD", name: "Hong Kong", flag: "🇭🇰" },
     { code: "CNY", name: "China", flag: "🇨🇳" },
-    { code: "CAD", name: "Canada", flag: "🇨🇦" },
   ];
 
   const fetchExchangeRate = useCallback(async () => {
@@ -100,26 +100,21 @@ const CurrencyConverter = () => {
 
       const data = await response.json();
       const rates = [];
-      const uniqueCurrencies = new Set();
 
+      // Maintain order of topCountries
       topCountries.forEach((country) => {
-        if (!uniqueCurrencies.has(country.code)) {
-          uniqueCurrencies.add(country.code);
-          const rate = data.rates[country.code];
-          if (rate) {
-            rates.push({
-              code: country.code,
-              name: country.name,
-              flag: country.flag,
-              rate: (1 / rate).toFixed(4), // Convert from INR to foreign currency
-              inrRate: rate.toFixed(4), // 1 foreign currency = X INR
-            });
-          }
+        const rate = data.rates[country.code];
+        if (rate) {
+          rates.push({
+            code: country.code,
+            name: country.name,
+            flag: country.flag,
+            rate: (1 / rate).toFixed(4), // Convert from INR to foreign currency
+            inrRate: (1 / rate).toFixed(2), // 1 foreign currency = X INR
+          });
         }
       });
 
-      // Sort by currency code for better organization
-      rates.sort((a, b) => a.code.localeCompare(b.code));
       setLiveRates(rates);
     } catch (err) {
       console.error("Live rates error:", err);
@@ -146,142 +141,149 @@ const CurrencyConverter = () => {
 
   return (
     <>
-      <div className="pt-[4.5rem] sm:pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden min-h-screen">
+      <div className="pt-[4.5rem] sm:pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden min-h-screen bg-n-8">
         <Header />
         <Section className="py-12 sm:py-16 lg:py-20">
           <div className="container relative z-2 px-4 sm:px-5">
             <Heading
-              title="Currency Converter"
-              text="Get live exchange rates and convert currencies in real-time"
+              title="Live Exchange Rates"
+              text="Real-time exchange rates for major currencies"
               className="mb-8 sm:mb-12"
             />
 
-            {/* Live Rates Table */}
-            <div className="mb-8 sm:mb-12">
-              <div className="bg-n-8 border border-n-6 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12">
-                <h2 className="h3 mb-4 sm:mb-6 text-n-1 text-xl sm:text-2xl md:text-3xl">Live Exchange Rates</h2>
-                <p className="body-2 text-n-2 mb-4 sm:mb-6 text-sm sm:text-base">
-                  Real-time exchange rates for major currencies
-                </p>
-                
-                {ratesLoading ? (
-                  <div className="text-center py-8 sm:py-12">
-                    <p className="body-2 text-n-2 text-sm sm:text-base">Loading live rates...</p>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto -mx-4 sm:mx-0">
-                    <div className="inline-block min-w-full align-middle px-4 sm:px-0">
-                      <table className="w-full min-w-[600px]">
-                        <thead>
-                          <tr className="border-b border-n-6">
-                            <th className="text-left py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">Country</th>
-                            <th className="text-left py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">Currency</th>
-                            <th className="text-right py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">1 INR =</th>
-                            <th className="text-right py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-1 text-xs sm:text-sm">1 Foreign =</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {liveRates.map((rate, index) => (
-                            <tr
-                              key={index}
-                              className="border-b border-n-6/50 hover:bg-n-7/30 transition-colors"
-                            >
-                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-2 text-xs sm:text-sm">
-                                <span className="mr-2">{rate.flag}</span>
-                                <span className="hidden sm:inline">{rate.name}</span>
-                                <span className="sm:hidden">{rate.code}</span>
-                              </td>
-                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-2 font-semibold text-xs sm:text-sm">
-                                {rate.code}
-                              </td>
-                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-n-2 text-right text-xs sm:text-sm">
-                                {rate.rate} {rate.code}
-                              </td>
-                              <td className="py-3 sm:py-4 px-2 sm:px-4 body-2 text-color-1 text-right font-semibold text-xs sm:text-sm">
-                                ₹{rate.inrRate}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+            {/* Live Rates Digital Board */}
+            <div className="mb-16 max-w-5xl mx-auto">
+              <div className="relative bg-[#0d0d0d] border-4 border-n-6 rounded-3xl overflow-hidden shadow-2xl">
+                {/* Board Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none z-10" />
+
+                <div className="p-6 sm:p-10">
+                  <div className="flex justify-between items-center mb-10 border-b border-n-6 pb-6">
+                    <div>
+                      <h2 className="text-3xl sm:text-4xl font-bold text-n-1 tracking-tight">EXCHANGE BOARD</h2>
+                      <p className="text-color-1 font-mono text-sm sm:text-base mt-1">REAL-TIME MARKET DATA</p>
+                    </div>
+                    <div className="text-right hidden sm:block">
+                      <p className="text-n-3 text-xs uppercase tracking-widest">Last Update</p>
+                      <p className="text-n-1 font-mono">{lastUpdated || "Updating..."}</p>
                     </div>
                   </div>
-                )}
-                
-                <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-n-7/50 border border-n-6 rounded-xl">
-                  <p className="body-2 text-n-2 text-center text-xs sm:text-sm md:text-base">
-                    <strong className="text-n-1">Note:</strong> Rates are updated in real-time. 
-                    For transaction-specific rates, please{" "}
-                    <a
-                      href={
-                        "https://wa.me/919599516159?text=" +
-                        encodeURIComponent(
-                          "Hi Shivalix Forex, I need transaction-specific forex rates from the Currency Converter page."
-                        )
-                      }
-                      className="text-color-1 hover:underline break-all sm:break-normal"
-                    >
-                      contact us on WhatsApp
-                    </a>
-                    .
-                  </p>
+
+                  {ratesLoading ? (
+                    <div className="flex flex-col items-center justify-center py-20">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-color-1 mb-4"></div>
+                      <p className="text-n-2 font-mono">SYNCHRONIZING RATES...</p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                      {liveRates.map((rate, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center group hover:scale-[1.02] transition-transform duration-200"
+                        >
+                          {/* The "White Box" from screenshot */}
+                          <div className="flex flex-1 items-center bg-white rounded-lg overflow-hidden shadow-lg h-16 sm:h-20">
+                            <div className="flex items-center justify-center w-20 sm:w-24 h-full bg-n-2/10 border-r border-n-6/20">
+                              <span className="text-4xl sm:text-5xl">{rate.flag}</span>
+                            </div>
+                            <div className="flex flex-1 items-center justify-between px-6 sm:px-8">
+                              <span className="text-2xl sm:text-3xl font-black text-black tracking-tighter">{rate.code}</span>
+                              <div className="text-right">
+                                <span className="text-xs sm:text-sm font-bold text-n-3 uppercase block leading-none mb-1">INR RATE</span>
+                                <span className="text-xl sm:text-2xl font-mono font-black text-black">₹{rate.inrRate}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-12 pt-6 border-t border-n-6/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p className="text-n-3 text-[10px] sm:text-xs font-mono uppercase tracking-tighter text-center sm:text-left">
+                      RATES ARE SUBJECT TO CHANGE & GOVERNMENT TAXES AS APPLICABLE
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-n-1 text-xs font-mono uppercase tracking-widest">Live Connection</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-n-8 border border-n-6 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <div className="max-w-4xl mx-auto mb-12">
+              <Heading
+                title="Convert Currency"
+                text="Quickly calculate exchange values for your transactions"
+                className="mb-8"
+              />
+              <div className="bg-n-8 border border-n-6 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl hover:border-n-5 transition-colors">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                   {/* From Currency */}
-                  <div>
-                    <label className="block body-2 text-n-1 mb-2 sm:mb-3 text-sm sm:text-base">
+                  <div className="space-y-3">
+                    <label className="block text-sm font-bold text-n-3 uppercase tracking-wider">
                       From Currency
                     </label>
-                    <select
-                      value={fromCurrency}
-                      onChange={(e) => setFromCurrency(e.target.value)}
-                      className="w-full h-11 sm:h-12 px-3 sm:px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-2 focus:outline-none focus:border-color-1 transition-colors text-sm sm:text-base"
-                    >
-                      {currencies.map((currency) => (
-                        <option key={currency.code} value={currency.code}>
-                          {currency.code} - {currency.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative group">
+                      <select
+                        value={fromCurrency}
+                        onChange={(e) => setFromCurrency(e.target.value)}
+                        className="w-full h-14 px-5 bg-n-7 border border-n-6 rounded-2xl text-n-1 font-semibold focus:outline-none focus:border-color-1 transition-all appearance-none cursor-pointer group-hover:bg-n-6"
+                      >
+                        {currencies.map((currency) => (
+                          <option key={currency.code} value={currency.code} className="bg-n-7 text-n-1">
+                            {currency.code} - {currency.name}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-n-3">
+                        <svg width="12" height="12" viewBox="0 0 10 6" fill="none">
+                          <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
 
                   {/* To Currency */}
-                  <div>
-                    <label className="block body-2 text-n-1 mb-2 sm:mb-3 text-sm sm:text-base">
+                  <div className="space-y-3">
+                    <label className="block text-sm font-bold text-n-3 uppercase tracking-wider">
                       To Currency
                     </label>
-                    <select
-                      value={toCurrency}
-                      onChange={(e) => setToCurrency(e.target.value)}
-                      className="w-full h-11 sm:h-12 px-3 sm:px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-2 focus:outline-none focus:border-color-1 transition-colors text-sm sm:text-base"
-                    >
-                      {currencies.map((currency) => (
-                        <option key={currency.code} value={currency.code}>
-                          {currency.code} - {currency.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative group">
+                      <select
+                        value={toCurrency}
+                        onChange={(e) => setToCurrency(e.target.value)}
+                        className="w-full h-14 px-5 bg-n-7 border border-n-6 rounded-2xl text-n-1 font-semibold focus:outline-none focus:border-color-1 transition-all appearance-none cursor-pointer group-hover:bg-n-6"
+                      >
+                        {currencies.map((currency) => (
+                          <option key={currency.code} value={currency.code} className="bg-n-7 text-n-1">
+                            {currency.code} - {currency.name}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-n-3">
+                        <svg width="12" height="12" viewBox="0 0 10 6" fill="none">
+                          <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Swap Button */}
-                <div className="flex justify-center mb-4 sm:mb-6">
+                <div className="flex justify-center -mt-12 mb-4 relative z-10">
                   <button
                     onClick={handleSwap}
-                    className="p-2 sm:p-3 bg-n-7 border border-n-6 rounded-xl hover:bg-n-6 transition-colors"
+                    className="group bg-color-1 hover:bg-color-1/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform transition-all active:scale-90"
                     aria-label="Swap currencies"
                   >
                     <svg
-                      width="20"
-                      height="20"
+                      width="24"
+                      height="24"
                       viewBox="0 0 24 24"
                       fill="none"
-                      className="text-n-1 sm:w-6 sm:h-6"
+                      className="transform group-hover:rotate-180 transition-transform duration-500"
                     >
                       <path
                         d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"
@@ -295,77 +297,84 @@ const CurrencyConverter = () => {
                 </div>
 
                 {/* Amount Input */}
-                <div className="mb-4 sm:mb-6">
-                    <label className="block body-2 text-n-1 mb-2 sm:mb-3 text-sm sm:text-base">
-                      Amount
-                    </label>
+                <div className="mb-8 space-y-3">
+                  <label className="block text-sm font-bold text-n-3 uppercase tracking-wider">
+                    Amount to Convert
+                  </label>
+                  <div className="relative">
                     <input
                       type="number"
                       value={amount}
                       onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
                       min="0"
                       step="0.01"
-                      className="w-full h-12 sm:h-14 px-3 sm:px-4 bg-n-7 border border-n-6 rounded-xl text-n-1 body-1 focus:outline-none focus:border-color-1 transition-colors text-sm sm:text-base"
-                      placeholder="Enter amount"
+                      className="w-full h-16 px-6 bg-n-7 border border-n-6 rounded-2xl text-n-1 text-2xl font-mono focus:outline-none focus:border-color-1 transition-all"
+                      placeholder="0.00"
                     />
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 text-color-1 font-bold">
+                      {fromCurrency}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Convert Button */}
-                <div className="mb-4 sm:mb-6">
+                <div className="mb-10">
                   <Button
                     onClick={fetchExchangeRate}
-                    className="w-full text-sm sm:text-base"
+                    className="w-full h-16 rounded-2xl text-lg uppercase tracking-widest font-bold"
                     disabled={loading}
                   >
-                    {loading ? "Fetching rates..." : "Get Live Rate"}
+                    {loading ? "FETCHING LIVE RATES..." : "GET LIVE QUOTE"}
                   </Button>
                 </div>
 
                 {/* Error Message */}
                 {error && (
-                  <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-color-3/10 border border-color-3 rounded-xl">
-                    <p className="body-2 text-color-3 text-sm sm:text-base">{error}</p>
+                  <div className="mb-8 p-4 bg-red-500/10 border border-red-500/50 rounded-2xl flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">!</div>
+                    <p className="text-red-500 font-medium">{error}</p>
                   </div>
                 )}
 
                 {/* Conversion Result */}
                 {convertedAmount !== null && !error && (
-                  <div className="bg-gradient-to-br from-color-1/10 to-color-2/10 border border-color-1/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 text-center">
-                    <p className="body-2 text-n-2 mb-2 text-sm sm:text-base">Exchange Rate</p>
-                    <p className="h3 mb-3 sm:mb-4 text-color-1 text-lg sm:text-xl md:text-2xl lg:text-3xl break-words">
-                      1 {fromCurrency} = {exchangeRate?.toFixed(4)} {toCurrency}
-                    </p>
-                    <div className="h-px bg-n-6 my-4 sm:my-6"></div>
-                    <p className="body-2 text-n-2 mb-2 text-sm sm:text-base">Converted Amount</p>
-                    <p className="h2 text-n-1 text-xl sm:text-2xl md:text-3xl break-words">
-                      {amount.toLocaleString(undefined, {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}{" "}
-                      {fromCurrency} ={" "}
-                      <span className="text-color-1">
+                  <div className="bg-gradient-to-br from-n-7 to-n-8 border border-n-6 rounded-3xl p-8 mb-10 shadow-inner">
+                    <div className="flex flex-col items-center gap-4">
+                      <div className="text-n-3 font-mono text-sm tracking-widest uppercase">
+                        Current Market Rate
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-black text-n-1">
+                        1 {fromCurrency} = <span className="text-color-1">{exchangeRate?.toFixed(4)}</span> {toCurrency}
+                      </div>
+                      <div className="w-full h-px bg-n-6 my-4"></div>
+                      <div className="text-n-3 font-mono text-sm tracking-widest uppercase">
+                        Estimated Value
+                      </div>
+                      <div className="text-4xl sm:text-5xl md:text-6xl font-black text-n-1 tracking-tighter">
                         {parseFloat(convertedAmount).toLocaleString(undefined, {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
                         })}{" "}
-                        {toCurrency}
-                      </span>
-                    </p>
-                    {lastUpdated && (
-                      <p className="caption text-n-2 mt-3 sm:mt-4 text-xs sm:text-sm">
-                        Last updated: {lastUpdated}
-                      </p>
-                    )}
+                        <span className="text-color-1">{toCurrency}</span>
+                      </div>
+                      {lastUpdated && (
+                        <div className="mt-4 flex items-center gap-2 px-4 py-2 bg-n-6/30 rounded-full border border-n-6">
+                          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                          <span className="text-n-3 text-[10px] font-mono tracking-widest uppercase">
+                            Updated: {lastUpdated}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
 
                 {/* Info Note */}
-                <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-n-7/50 border border-n-6 rounded-xl">
-                  <p className="body-2 text-n-2 text-xs sm:text-sm md:text-base">
-                    <strong className="text-n-1">Note:</strong> Exchange rates
-                    are updated in real-time from market data. Rates may vary
-                    slightly from actual transaction rates. For accurate rates
-                    for your transaction, please{" "}
+                <div className="p-4 sm:p-6 bg-color-4/5 border border-color-4/20 rounded-2xl">
+                  <p className="text-n-3 text-xs sm:text-sm leading-relaxed text-center italic">
+                    <strong className="text-n-1 not-italic uppercase tracking-widest text-[10px] mr-2">Disclaimer:</strong>
+                    Rates shown are mid-market indices and for informational purposes only. Actual transaction rates may include service fees and taxes.
+                    For a confirmed booking rate, {" "}
                     <a
                       href={
                         "https://wa.me/919599516159?text=" +
@@ -373,9 +382,9 @@ const CurrencyConverter = () => {
                           "Hi Shivalix Forex, I need accurate forex rates for my transaction from the Currency Converter page."
                         )
                       }
-                      className="text-color-1 hover:underline break-all sm:break-normal"
+                      className="text-color-1 font-bold hover:underline"
                     >
-                      contact our sales team on WhatsApp
+                      WhatsApp our trading desk
                     </a>
                     .
                   </p>
