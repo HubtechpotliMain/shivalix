@@ -23,14 +23,14 @@ const BannerSlider = () => {
             {banners.map((banner, index) => (
                 <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out bg-n-8 ${index === currentIndex ? "opacity-100" : "opacity-0"
                         }`}
                 >
                     <Image
                         src={banner}
                         alt={`Banner ${index + 1}`}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         priority={index === 0}
                     />
                 </div>
